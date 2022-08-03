@@ -3,7 +3,7 @@ const {
   checkIfAnyPokemonWeighsLessThan,
   findByName,
   filterByType,
-  checkMinBaseExperience
+  checkMinBaseExperience,
 } = require("..");
 
 const pokemon = require("../pokemon");
