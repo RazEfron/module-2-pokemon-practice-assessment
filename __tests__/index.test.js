@@ -163,7 +163,7 @@ describe("filterByType()", () => {
   });
 });
 
-describe("checkMinBaseExperience()", () => {
+describe.only("checkMinBaseExperience()", () => {
   test("should use the `.every()` method", () => {
     const text = checkMinBaseExperience.toString();
     expect(text).toMatch(/\.every\(.*\)/s);
