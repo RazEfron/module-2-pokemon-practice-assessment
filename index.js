@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all pokemon.
 */
+const pokemon = require("./pokemon.js");
 const examplePokemon = require("./pokemon.js");
 // Do not change the line above.
 
@@ -35,7 +36,12 @@ const examplePokemon = require("./pokemon.js");
 ];
  */
 
-function getAllPokemonNames() {}
+function getAllPokemonNames(pokemon) {
+  if (pokemon.length === 1){
+    throw "error";
+  }
+  return pokemon.map(poke => poke.name);
+}
 
 /**
  * checkIfAnyPokemonWeighsLessThan()
@@ -55,7 +61,9 @@ function getAllPokemonNames() {}
  *  checkIfAnyPokemonWeighsLessThan(pokemon, 18);
  *  //> false
  */
-function checkIfAnyPokemonWeighsLessThan() {}
+function checkIfAnyPokemonWeighsLessThan(pokemon, weight = 19) {
+  return pokemon.some(poke => poke.weight < weight);
+}
 
 /**
  * findByName()
@@ -73,7 +81,9 @@ function checkIfAnyPokemonWeighsLessThan() {}
       // clefable
     };
  */
-function findByName() {}
+function findByName(pokemon, id) {
+ return pokemon.find(poke => poke.pokeId === id) || null;
+}
 
 /**
  * filterByType()
@@ -99,7 +109,9 @@ function findByName() {}
  *  filterByType(pokemon, "psychic")
  *  //> []
  */
-function filterByType() {}
+function filterByType(pokemon, type) {
+  return pokemon.filter(poke => poke.types.find((type1) => type1.type.name.toLowerCase() === type.toLowerCase()));
+}
 
 /**
  * checkMinBaseExperience()
@@ -116,7 +128,12 @@ function filterByType() {}
  *  //>  false
  */
 
-function checkMinBaseExperience(pokemon, baseExperience) {}
+function checkMinBaseExperience(pokemon, baseExperience) {
+  if (!pokemon.length){
+    throw "Error";
+  }
+  return pokemon.every(poke => poke.base_experience > baseExperience);
+}
 
 module.exports = {
   getAllPokemonNames,
